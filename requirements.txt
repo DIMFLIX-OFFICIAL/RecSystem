@@ -1,0 +1,10 @@
+pip==22.3.1
+py4j==0.10.9.7
+pyspark==3.4.1
+setuptools==65.5.1
+wheel==0.38.4
+asyncpg~=0.28.0
+pandas~=2.1.0
+loguru~=0.7.1
+progress~=1.6
+SQLAlchemy~=2.0.20
