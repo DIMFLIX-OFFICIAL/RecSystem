@@ -154,27 +154,36 @@ class RecSystem:
 			sum_categories_raiting += i
 
 		max_rec = 10
-		count_vidios_in_recs = {
+		count_videos_in_recs = {
 			category: raiting/sum_categories_raiting*max_rec
 			for category, raiting in users_raiting[our_user_id]["categories_raiting"].items()
 		}
 
 		recommendations = []
-		for category, count_videos in count_vidios_in_recs:
-			sorted(all_categories[category].items(), key=lambda x: x[1])[::-1]
+		videos_watched = await self.get_user_views(our_user_id, filter_zero_time_watch=True)
+		for category, count in count_videos_in_recs.items():
+			if category in all_categories:
+				videos = all_categories[category]
+				sorted_videos = sorted(videos.items(), key=lambda x: x[1], reverse=True)
 
+				for video, popularity in sorted_videos:
+					for i in videos_watched:
+						if i["item_id"] == video:
+							break
+					else:
+						recommendations.append(video)
 
+					if len(recommendations) == 10:
+						break
 
-
-
-
+		logger.success({"user_id": our_user_id, "recommendations": recommendations})
 
 
 
 async def main():
 	rec = RecSystem()
 	await rec.create_connection()
-	await rec.get_reccomendations("user_10002121")
+	await rec.get_reccomendations(input("Введите user_id: "))
 
 
 if __name__ == "__main__":
