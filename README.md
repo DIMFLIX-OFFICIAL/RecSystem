@@ -45,4 +45,4 @@
 4. Ограниченность выбора контента: пользователи могут ограничиваться только существующими категориями и жанрами видео, не имея возможности открыть что-то новое.
 
 # Итоги Хакатона
-![alt text](http://url/to/img.png)
+![alt text]([http://url/to/img.png](https://github.com/DIMFLIX-OFFICIAL/EDYK-RecSystem/blob/master/итоги%20хакатона.png)https://github.com/DIMFLIX-OFFICIAL/EDYK-RecSystem/blob/master/итоги%20хакатона.png)
